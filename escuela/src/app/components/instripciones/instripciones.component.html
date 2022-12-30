@@ -1,32 +1,76 @@
-<form class="container text-center">
-  <h1>Registro de alumnos</h1>
+<div class="container text-center">
+  <form #estudiantesForm="ngForm" (ngSubmit)="onSubmit(estudiantesForm)">
+    <h1>{{ title }}</h1>
 
-  <hr />
+    <hr />
 
-  <div class="mb-3">
-    <label class="form-label">Nombre:</label><br />
-    <input type="text" placeholder="Agrega el nombre aquí" />
-  </div>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre:</label>&nbsp;
+      <input
+        type="text"
+        name="nombre"
+        #nombre="ngModel"
+        [(ngModel)]="estudiantes.nombre"
+        placeholder="Agrega el nombre aquí"
+      />
+    </div>
 
-  <div class="mb-3">
-    <label class="form-label">Apellido:</label><br />
-    <input type="text" placeholder="Agrega el Apellido aquí" />
-  </div>
+    <div class="mb-3">
+      <label for="apellido" class="form-label">Apellido:</label>&nbsp;
+      <input
+        type="text"
+        name="apellido"
+        #apellido="ngModel"
+        [(ngModel)]="estudiantes.apellido"
+        placeholder="Agrega el Apellido aquí"
+      />
+    </div>
 
-  <div class="mb-3">
-    <label class="form-label">Edad:</label><br />
-    <input type="text" placeholder="Agrega la edad aquí" />
-  </div>
+    <div class="mb-3">
+      <label for="edad" class="form-label">Edad:</label>&nbsp;
+      <input
+        type="number"
+        name="edad"
+        #edad="ngModel"
+        [(ngModel)]="estudiantes.edad"
+        placeholder="Agrega la edad aquí"
+      />
+    </div>
 
-  <div class="mb-3">
-    <label class="form-label">Sexo:</label><br />
-    <input type="text" placeholder="Agrega el sexo aquí" />
-  </div>
+    <div class="mb-3">
+      <label for="sexo" class="form-label">Sexo:</label>&nbsp;
+      <input
+        type="text"
+        name="sexo"
+        #sexo="ngModel"
+        [(ngModel)]="estudiantes.sexo"
+        placeholder="Agrega el sexo aquí"
+      />
+    </div>
 
-  <div class="mb-3">
-    <label class="form-label">Clase:</label><br />
-    <input type="text" placeholder="Agrega la clase aquí" />
-  </div>
+    <div class="mb-3">
+      <label for="clase" class="form-label">Clase:</label>&nbsp;
+      <input
+        type="text"
+        name="clase"
+        #clase="ngModel"
+        [(ngModel)]="estudiantes.clase"
+        placeholder="Agrega la clase aquí"
+      />
+    </div>
 
-  <input type="submit" class="btn btn-danger" value="Guardar" />
-</form>
+    <div class="mb-3">
+      <label for="imagen" class="form-label">Imagen de perfil del alumno</label
+      >&nbsp;
+      <input
+        type="file"
+        name="image"
+        #image="ngModel"
+        [(ngModel)]="estudiantes.image"
+        placeholder="Agrega la imagen del alumno aquí"
+      />
+    </div>
+
+    <input type="submit" class="btn btn-success" value="Guardar" />
+  </form>
+</div>
