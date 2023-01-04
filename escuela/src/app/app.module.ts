@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // Apartado de rutas y el privider que va en el de providers.
 import { appRoutingProvider } from './app.routing';
-import {routes} from "./app.routing"
+import { routes } from './app.routing';
 
 // importaciones de modulos que van en el apartado de imports.
 import { HttpClientModule } from '@angular/common/http';
@@ -16,8 +16,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { InstripcionesComponent } from './components/instripciones/instripciones.component';
-import { RegistoProfesoresComponent } from './components/registo-profesores/registo-profesores.component';
-import { ListadoProfesoresComponent } from './components/listado-profesores/listado-profesores.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +23,6 @@ import { ListadoProfesoresComponent } from './components/listado-profesores/list
     HomeComponent,
     RegistroComponent,
     InstripcionesComponent,
-    RegistoProfesoresComponent,
-    ListadoProfesoresComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +31,7 @@ import { ListadoProfesoresComponent } from './components/listado-profesores/list
     HttpClientModule,
     FormsModule,
   ],
-  providers: [
-    appRoutingProvider
-  ],
-  bootstrap: [AppComponent]
+  providers: [appRoutingProvider],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
