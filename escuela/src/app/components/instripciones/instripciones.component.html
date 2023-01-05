@@ -94,6 +94,7 @@
         #image="ngModel"
         [(ngModel)]="estudiantes.image"
         placeholder="Agrega la imagen del alumno aquí"
+        (change)="fileUpload($event)"
         required
       />
       <span *ngIf="image.touched && !image.valid">
@@ -101,7 +102,12 @@
       </span>
     </div>
 
-    <input type="submit" class="btn btn-success" value="Guardar" />
+    <input
+      type="submit"
+      class="btn btn-success"
+      value="Guardar"
+      [disabled]="!estudiantesForm.form.valid"
+    />
 
     <!-- [disabled]="!estudiantesForm.form.valid" -->
   </form>
