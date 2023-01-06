@@ -1,6 +1,14 @@
-<section class="container text-center">
+<section class="container">
   <h1>{{ title }}</h1>
   <hr />
 
   <!-- Aqui estaran los alumnos sacados del api REST -->
+
+  <ul>
+    <li *ngFor="let estudiante of estudiantes">
+      <strong>{{ estudiante.nombre }} {{ estudiante.apellido }}</strong>
+      <p>{{ estudiante.edad }} años</p>
+      <p>{{ estudiante.clase }}</p>
+    </li>
+  </ul>
 </section>
