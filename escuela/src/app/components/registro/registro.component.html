@@ -3,12 +3,15 @@
   <hr />
 
   <!-- Aqui estaran los alumnos sacados del api REST -->
-
-  <ul>
-    <li *ngFor="let estudiante of estudiantes">
-      <strong>{{ estudiante.nombre }} {{ estudiante.apellido }}</strong>
-      <p>{{ estudiante.edad }} años</p>
-      <p>{{ estudiante.clase }}</p>
-    </li>
-  </ul>
+  <section class="border border-primary">
+    <ul class="mt-3">
+      <li *ngFor="let estudiante of estudiantes" class="list-group">
+        <p><strong>Nombre: </strong> {{ estudiante.nombre }}</p>
+        <p><strong>Apellido: </strong> {{ estudiante.apellido }}</p>
+        <p><strong>Edad: </strong>{{ estudiante.edad }} años</p>
+        <p><strong>Sexo: </strong>{{ estudiante.sexo }}</p>
+        <p><strong>Curso: </strong>{{ estudiante.clase }}</p>
+      </li>
+    </ul>
+  </section>
 </section>
