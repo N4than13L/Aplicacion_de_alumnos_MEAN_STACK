@@ -2,6 +2,7 @@
 
 var Modelo = require("../Model/models");
 var fs = require("fs");
+var path = require("path");
 
 var controller = {
   //Rutas de Prueba.
@@ -165,6 +166,23 @@ var controller = {
         messages: fileName,
       });
     }
+  },
+
+  obtener_imagen: function (req, res) {
+    // 1. obtener parametros por url.
+    var file = req.params.image;
+    var path_file = "./uploads" + file;
+
+    // comprobar si existe.
+    fs.exists(path_file, (exists) => {
+      if (exists) {
+        return res.sendFile(path.resolve(path_file));
+      } else {
+        return res.status(200).send({
+          message: "No existe la imagen ",
+        });
+      }
+    });
   },
 };
 

@@ -22,6 +22,7 @@ router.delete("/eliminar-alumno/:id", controllers.BorrarAlumno);
 
 // Ruta para poder subir imagen al API.
 router.post("/subir-image/:id", multipartMiddleware, controllers.subirImagen);
+router.get("/obtener-imagen/:image", controllers.obtener_imagen);
 
 // Rutas para Subir inventario.
 router.post("/subir-inventario", Inventory.addInventory);
