@@ -33,9 +33,18 @@ export class EstudiantesService {
     });
   }
 
-  obtener_Alumno(): Observable<any>{
+  obtener_Alumnos(): Observable<any> {
     // 1. declarar los headers.
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.get(this.url+ "listado-de-alumnos", {headers: headers});
+    return this._http.get(this.url + 'listado-de-alumnos', {
+      headers: headers,
+    });
+  }
+
+  obtener_Alumno(id: any): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url + 'obtener-alumno/' + id, {
+      headers: headers,
+    });
   }
 }

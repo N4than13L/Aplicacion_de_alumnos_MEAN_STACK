@@ -1,6 +1,6 @@
 export class Estudiantes {
     constructor(
-        public id: string,
+        public _id: string,
         public nombre: string,
         public apellido: string,
         public edad: number,

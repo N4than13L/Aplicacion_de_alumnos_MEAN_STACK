@@ -8,7 +8,6 @@ import { routes } from './app.routing';
 // importaciones de modulos que van en el apartado de imports.
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 
 // Componentes
@@ -16,6 +15,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { InstripcionesComponent } from './components/instripciones/instripciones.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { InstripcionesComponent } from './components/instripciones/instripciones
     HomeComponent,
     RegistroComponent,
     InstripcionesComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,

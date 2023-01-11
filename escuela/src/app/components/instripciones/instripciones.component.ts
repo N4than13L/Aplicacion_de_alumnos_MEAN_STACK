@@ -18,6 +18,7 @@ export class InstripcionesComponent implements OnInit {
   public estudiantes: Estudiantes;
   public status: string | any;
   public FilesToUpload: Array<File>;
+  public estudiante_almacenado: any
 
   constructor(
     private _estudiantesService: EstudiantesService,
@@ -49,14 +50,15 @@ export class InstripcionesComponent implements OnInit {
               'image'
             )
             .then((result: any) => {
-              alert("Alumno inscrito")
+              // alert("Alumno inscrito")
+              this.estudiante_almacenado = response.estudiantes
               this.status = 'success';
               console.log(result);
               form.reset();
             });
 
         } else {
-          alert("No se a podido inscribir el alumno")
+          // alert("No se a podido inscribir el alumno")
           this.status = 'failed';
         }
       },

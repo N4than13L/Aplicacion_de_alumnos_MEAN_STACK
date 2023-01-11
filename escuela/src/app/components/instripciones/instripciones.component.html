@@ -1,10 +1,7 @@
 <div class="container">
   <div class="alert alert-success mt-3" *ngIf="status == 'success'">
-    estudiante registrado con exito.
-  </div>
-
-  <div class="alert alert-danger mt-3" *ngIf="status == 'failed'">
-    no se ha podido registrar el alumno.
+    Estudiante registrado con exito.
+    <a [routerLink]="['/alumno', estudiante_almacenado._id]">Ver Aquí.</a>
   </div>
 
   <form #estudiantesForm="ngForm" (ngSubmit)="onSubmit(estudiantesForm)">
