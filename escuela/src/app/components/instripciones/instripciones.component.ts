@@ -16,11 +16,13 @@ import { global } from 'src/app/services/global';
 export class InstripcionesComponent implements OnInit {
   public title: string;
   public estudiantes: Estudiantes;
-  public status: string
-  public FilesToUpload: Array<File> 
+  public status: string | any;
+  public FilesToUpload: Array<File>;
 
-  constructor(private _estudiantesService: EstudiantesService, private _uploadImage: UploadService) {
-    this.status = "";
+  constructor(
+    private _estudiantesService: EstudiantesService,
+    private _uploadImage: UploadService
+  ) {
     this.title = 'Inscripciones de alumnos';
     this.estudiantes = new Estudiantes('', '', '', 0, '', '', '');
     this.FilesToUpload = [];
@@ -33,21 +35,29 @@ export class InstripcionesComponent implements OnInit {
     /* se instancia el servicio con la funcion con su respectivo parametro y 
     con el metodo subscribe que recibe un la response y el error
     */
+
     //  subida de infomacion.
     this._estudiantesService.guardar_alumno(this.estudiantes).subscribe(
       (response) => {
         if (response.estudiantes) {
-          
           // subida de imagenes.
-          this._uploadImage.uploadImage(global.url + "subir-image" +response.estudiantes._id, [], this.FilesToUpload, 'image').then((result: any) => {
-            this.status = "success"
-            console.log(result);
-            
-          });
-          form.reset();
-          this
+          this._uploadImage
+            .uploadImage(
+              global.url + 'subir-image/' + response.estudiantes._id,
+              [],
+              this.FilesToUpload,
+              'image'
+            )
+            .then((result: any) => {
+              alert("Alumno inscrito")
+              this.status = 'success';
+              console.log(result);
+              form.reset();
+            });
+
         } else {
-          this.status = "failed";
+          alert("No se a podido inscribir el alumno")
+          this.status = 'failed';
         }
       },
       (error) => {
@@ -56,7 +66,7 @@ export class InstripcionesComponent implements OnInit {
     );
   }
 
-  fileUpload(fileInput:any){
+  fileUpload(fileInput: any) {
     this.FilesToUpload = <Array<File>>fileInput.target.files;
   }
 }

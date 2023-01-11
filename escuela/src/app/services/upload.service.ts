@@ -1,6 +1,5 @@
 // importar las dependencias necesarias.
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { global } from './global';
 
 @Injectable()
@@ -17,13 +16,14 @@ export class UploadService {
     name: string
   ) {
     return new Promise(function (resolve, reject) {
-        let formData:any = new FormData();
-        let xhr = new XMLHttpRequest();
+        var formData:any = new FormData();
+        var xhr = new XMLHttpRequest();
 
-        for (let i = 0; i < files.length; i++) {
+        for (var i = 0; i < files.length; i++) {
             formData.append(name, files[i], files[i].name);
         }
 
+        // Ajax
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4){
                 if(xhr.status == 200){
@@ -34,6 +34,7 @@ export class UploadService {
             }
         }
 
+        // Peticion por post
         xhr.open('POST', url, true);
         xhr.send(formData);
     });

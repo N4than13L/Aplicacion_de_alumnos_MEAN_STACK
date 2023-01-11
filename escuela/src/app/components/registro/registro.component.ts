@@ -27,7 +27,6 @@ export class RegistroComponent implements OnInit {
     this.obtener_Alumnos();
   }
 
-
   // 4. Crear la funcion para sacar los alumnos y se carga en el ngOnInit.
   obtener_Alumnos(){
     this._estudiantesService.obtener_Alumno().subscribe(

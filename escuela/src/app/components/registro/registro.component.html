@@ -9,6 +9,10 @@
         *ngFor="let estudiante of estudiantes"
         class="border border-primary list-group mt-3"
       >
+        <img
+          class="alumno-foto"
+          src="{{ url + 'obtener-imagen/' + estudiante.image }}"
+        />
         <p><strong>&nbsp;Nombre:&nbsp;</strong> {{ estudiante.nombre }}</p>
         <p><strong>&nbsp;Apellido:&nbsp;</strong> {{ estudiante.apellido }}</p>
         <p><strong>&nbsp;Edad:&nbsp;</strong>{{ estudiante.edad }} años</p>

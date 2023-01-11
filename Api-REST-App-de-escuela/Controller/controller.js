@@ -171,7 +171,7 @@ var controller = {
   obtener_imagen: function (req, res) {
     // 1. obtener parametros por url.
     var file = req.params.image;
-    var path_file = "./uploads" + file;
+    var path_file = "./uploads/" + file;
 
     // comprobar si existe.
     fs.exists(path_file, (exists) => {
