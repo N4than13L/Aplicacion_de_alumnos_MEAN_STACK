@@ -1,1 +1,50 @@
-<h1>{{ estudiantes.nombre }}</h1>
+<div class="text-center mt-3">
+  <a class="btn btn-success" [routerLink]="['/registro']"> Ir Atras</a>
+</div>
+<section class="container mt-2">
+  <div>
+    <img
+      class="alumno-foto"
+      src="{{ url + 'obtener-imagen/' + estudiantes._id }}"
+      *ngIf="estudiantes.image"
+    />
+  </div>
+
+  <div>
+    <img
+      class="alumno-foto"
+      src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      *ngIf="!estudiantes.image"
+    />
+  </div>
+
+  <p>
+    <strong>Nombres y apellidos:</strong> {{ estudiantes.nombre }}
+    {{ estudiantes.apellido }}
+  </p>
+  <p><strong>Edad:</strong> {{ estudiantes.edad }} años</p>
+  <p><strong>Sexo:</strong> {{ estudiantes.sexo }}</p>
+  <p><strong>Curso:</strong> {{ estudiantes.clase }}</p>
+
+  <div *ngIf="confirm == false">
+    <a
+      [routerLink]="['/alumno-edicion', estudiantes._id]"
+      class="btn btn-warning p-3"
+      >Editar</a
+    >
+    &nbsp;
+    <a (click)="setConfirm(true)" class="btn btn-danger p-3">Eliminar</a>
+  </div>
+
+  <div *ngIf="confirm == true">
+    <p>
+      ¿Seguro que desear expulsar a {{ estudiantes.nombre }}
+      {{ estudiantes.apellido }}
+    </p>
+    <a (click)="setConfirm(false)" class="btn btn-warning p-3">Cancelar</a>
+    &nbsp;
+    <a (click)="borrar_alumno(estudiantes._id)" class="btn btn-danger p-3"
+      >Expulsar Permanentemente</a
+    >
+  </div>
+</section>

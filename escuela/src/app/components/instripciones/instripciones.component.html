@@ -1,3 +1,6 @@
+<div class="text-center mt-3">
+  <a class="btn btn-success" [routerLink]="['/registro']"> Ir Atras</a>
+</div>
 <div class="container">
   <div class="alert alert-success mt-3" *ngIf="status == 'success'">
     Estudiante registrado con exito.
@@ -32,7 +35,7 @@
         placeholder="Agrega el Apellido aquí"
         required
       />
-      <span *ngIf="apellido.touched && !apellido.valid">
+      <span *ngIf="apellido.touched && !apellido.valid" class="text-danger">
         El campo apellido debe ser rellenado.
       </span>
     </div>
@@ -47,7 +50,7 @@
         placeholder="Agrega la edad aquí"
         required
       />
-      <span *ngIf="edad.touched && !edad.valid">
+      <span *ngIf="edad.touched && !edad.valid" class="text-danger">
         El campo edad debe ser rellenado.
       </span>
     </div>
@@ -62,7 +65,7 @@
         placeholder="Agrega el sexo aquí"
         required
       />
-      <span *ngIf="sexo.touched && !sexo.valid">
+      <span *ngIf="sexo.touched && !sexo.valid" class="text-danger">
         El campo de nombre debe ser rellenado.
       </span>
     </div>
@@ -77,9 +80,17 @@
         placeholder="Agrega la clase aquí"
         required
       />
-      <span *ngIf="clase.touched && !clase.valid">
+      <span *ngIf="clase.touched && !clase.valid" class="text-danger">
         El campo de clase debe ser rellenado.
       </span>
+    </div>
+
+    <div>
+      <img
+        class="alumno-foto"
+        src="{{ url + 'obtener-imagen/' + estudiantes.image }}"
+        *ngIf="estudiantes.image"
+      />
     </div>
 
     <div class="mb-3">
@@ -94,7 +105,8 @@
         (change)="fileUpload($event)"
         required
       />
-      <span *ngIf="image.touched && !image.valid">
+
+      <span *ngIf="image.touched && !image.valid" class="text-danger">
         La imagen del alumno debe ser rellenado.
       </span>
     </div>

@@ -47,4 +47,21 @@ export class EstudiantesService {
       headers: headers,
     });
   }
+
+  borrar_Alumno(id:any): Observable<any>{
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.delete(this.url + 'eliminar-alumno/' + id, {
+      headers: headers,
+    });
+  }
+
+  actualizar_Alumno(estudiante:any): Observable<any>{
+    let params = JSON.stringify(estudiante);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.put(this.url + 'actualizar-alumno/' + estudiante._id, params, {
+      headers: headers,
+    });
+  }
+
 }

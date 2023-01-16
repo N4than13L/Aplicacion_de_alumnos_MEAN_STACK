@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 // importrar modelo (de estudiantes) y servicio(de estudiantes).
 import { Estudiantes } from 'src/app/models/Estudiantes';
 import { EstudiantesService } from 'src/app/services/estudiantes.service';
@@ -18,13 +17,15 @@ export class InstripcionesComponent implements OnInit {
   public estudiantes: Estudiantes;
   public status: string | any;
   public FilesToUpload: Array<File>;
-  public estudiante_almacenado: any
+  public estudiante_almacenado: any;
+  public url: string;
 
   constructor(
     private _estudiantesService: EstudiantesService,
     private _uploadImage: UploadService
   ) {
     this.title = 'Inscripciones de alumnos';
+    this.url = global.url;
     this.estudiantes = new Estudiantes('', '', '', 0, '', '', '');
     this.FilesToUpload = [];
   }
@@ -40,23 +41,26 @@ export class InstripcionesComponent implements OnInit {
     //  subida de infomacion.
     this._estudiantesService.guardar_alumno(this.estudiantes).subscribe(
       (response) => {
-        if (response.estudiantes) {
-          // subida de imagenes.
-          this._uploadImage
-            .uploadImage(
-              global.url + 'subir-image/' + response.estudiantes._id,
-              [],
-              this.FilesToUpload,
-              'image'
-            )
-            .then((result: any) => {
-              // alert("Alumno inscrito")
-              this.estudiante_almacenado = response.estudiantes
-              this.status = 'success';
-              console.log(result);
-              form.reset();
-            });
-
+        if (response.Alumno) {
+          if (this.FilesToUpload) {
+            // subida de imagenes.
+            this._uploadImage
+              .uploadImage(
+                global.url + 'subir-image' + response.Alumno._id,
+                [],
+                this.FilesToUpload,
+                'image'
+              )
+              .then((result: any) => {
+                // alert("Alumno inscrito")
+                this.estudiante_almacenado = result.Alumno;
+                this.status = 'success';
+              });
+          } else {
+            this.estudiante_almacenado = response.Alumno;
+            this.status = 'success';
+            form.reset();
+          }
         } else {
           // alert("No se a podido inscribir el alumno")
           this.status = 'failed';

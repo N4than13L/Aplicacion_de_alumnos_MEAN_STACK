@@ -16,6 +16,8 @@ import { HomeComponent } from './components/home/home.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { InstripcionesComponent } from './components/instripciones/instripciones.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { EditComponent } from './components/edit/edit.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { DetailComponent } from './components/detail/detail.component';
     RegistroComponent,
     InstripcionesComponent,
     DetailComponent,
+    EditComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

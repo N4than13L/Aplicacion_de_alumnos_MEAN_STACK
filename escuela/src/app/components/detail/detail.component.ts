@@ -14,15 +14,17 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class DetailComponent implements OnInit {
   public url: string;
   public estudiantes: Estudiantes;
+  public confirm: boolean
 
   constructor(
     private _estudiantesService: EstudiantesService,
-    private router: Router,
+    private _router: Router,
     private _route: ActivatedRoute
   ) {
     this.url = global.url;
     // this.estudiantes = [];
     this.estudiantes = new Estudiantes('', '', '', 0, '', '', '');
+    this.confirm = false;
   }
 
   ngOnInit(): void {
@@ -47,5 +49,21 @@ export class DetailComponent implements OnInit {
         console.log(<any>error);
       }
     );
+  }
+
+  borrar_alumno(id:any){
+    this._estudiantesService.borrar_Alumno(id).subscribe(
+      response =>{
+        if(response.Alumno){
+          this._router.navigate(['/registro'])
+        }
+      }, error =>{
+        console.log(<any>error)
+      }
+    )
+  }
+
+  setConfirm(confirm:boolean){
+    this.confirm = confirm
   }
 }

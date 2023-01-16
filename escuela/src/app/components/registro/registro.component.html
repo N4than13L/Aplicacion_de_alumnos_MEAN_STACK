@@ -10,13 +10,21 @@
         class="border border-primary list-group mt-3"
       >
         <a
-          class="card-text text-black"
+          class="card-text text-black text-decoration-none"
           [routerLink]="['/alumno', estudiante_almacenado._id]"
         >
           <img
             class="alumno-foto"
             src="{{ url + 'obtener-imagen/' + estudiante_almacenado.image }}"
+            *ngIf="estudiante_almacenado.image"
           />
+
+          <img
+            class="alumno-foto"
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            *ngIf="!estudiante_almacenado.image"
+          />
+
           <p>
             <strong>&nbsp;Nombre:&nbsp;</strong>
             {{ estudiante_almacenado.nombre }}
