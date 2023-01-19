@@ -18,6 +18,9 @@ import { InstripcionesComponent } from './components/instripciones/instripciones
 import { DetailComponent } from './components/detail/detail.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ErrorComponent } from './components/error/error.component';
+import { InstructorsComponent } from './components/instructors/instructors.component';
+import { InstructorstecnichalComponent } from './components/instructorstecnichal/instructorstecnichal.component';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { ErrorComponent } from './components/error/error.component';
     DetailComponent,
     EditComponent,
     ErrorComponent,
+    InstructorsComponent,
+    InstructorstecnichalComponent,
+    
   ],
   imports: [
     BrowserModule,

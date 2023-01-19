@@ -1,0 +1,12 @@
+<section class="container text-center">
+  <h1 class="mt-2">{{ title }}</h1>
+  <hr />
+
+  <ul *ngFor="let maestro of maestros">
+    <li class="border border-success list-group mt-3">
+      <img src="{{ maestro.avatar }}" class="profe-image" />
+      <h5>{{ maestro.first_name }} {{ maestro.last_name }}</h5>
+      <p>{{ maestro.email }}</p>
+    </li>
+  </ul>
+</section>
