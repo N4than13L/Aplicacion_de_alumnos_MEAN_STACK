@@ -8,6 +8,9 @@ var app = require("./app");
 
 var port = 3377;
 
+// conexion en remoto.
+// mongodb+srv://natharevolution:jcEuOEQjFZ74jI8t@escuela-mean-stack.nrmfvpw.mongodb.net/?retryWrites=true&w=majority
+// contrasena: jcEuOEQjFZ74jI8t
 mongoose
   .connect("mongodb://localhost:27017/estudiantes")
   .then(() => {
