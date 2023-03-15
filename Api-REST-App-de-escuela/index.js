@@ -24,7 +24,7 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.status(200).send({
     status: "200",
-    message: "Back-end de foro-github con Node js",
+    message: "back-end de aplicacion de escuela M.E.A.N Stack con Node js",
   });
 });
 
