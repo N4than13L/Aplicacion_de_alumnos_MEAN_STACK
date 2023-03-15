@@ -25,5 +25,13 @@ app.use((req, res, next) => {
 //Rutas
 app.use("/api", project_routes);
 
+// rutas harcodeadas.
+app.use("/", (req, res) => {
+  res.status(200).send({
+    status: "success",
+    message: "Pagina de inicio",
+  });
+});
+
 //Exportar
 module.exports = app;
