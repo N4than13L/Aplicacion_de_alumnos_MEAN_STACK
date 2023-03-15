@@ -1,31 +1,40 @@
 "use strict";
-
+// Requerimientos
 var express = require("express");
-var mongoose = require("mongoose");
+var bodyParser = require("body-parser");
+const { conexion } = require("./database/conexion");
 
-mongoose.Promise = global.Promise;
-var app = require("./app");
+var cors = require("cors");
 
-var port = 3377;
+// Cargar Express
+var app = express();
+var puerto = 3377;
 
-// conexion en remoto.
-// mongodb+srv://natharevolution:jcEuOEQjFZ74jI8t@escuela-mean-stack.nrmfvpw.mongodb.net/?retryWrites=true&w=majority
-// contrasena: jcEuOEQjFZ74jI8t
+// cargar archivos de rutas.
+var estudiantes_rutas = require("./Rutes/rutes");
 
-mongoose
-  .connect(
-    "mongodb+srv://natharevolution:jcEuOEQjFZ74jI8t@escuela-mean-stack.nrmfvpw.mongodb.net/?retryWrites=true&w=majority"
-  )
-  .then(() => {
-    app.listen(port, () => {
-      console.log(
-        " Api Rest ejecuntandose en link de prueba: http://localhost:" +
-          port +
-          "/api/listado-de-alumnos"
-      );
-    });
-  })
+/* Middlewears
+ Confifuracion para que boyoparser funcione bien */
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-  .catch((err) => {
-    console.log("Error al conectar", err);
+//configuracion del cors.
+app.use(cors());
+
+app.get("/", (req, res) => {
+  res.status(200).send({
+    status: "200",
+    message: "Back-end de foro-github con Node js",
   });
+});
+
+// reescribir rutas
+app.use("/api", estudiantes_rutas);
+
+// Crear servidor y escuchar peticiones http
+app.listen(puerto, () => {
+  console.log("Servidor corriendo en el puerto " + puerto);
+});
+
+/* Exportar el modulo app  */
+module.exports = app;
