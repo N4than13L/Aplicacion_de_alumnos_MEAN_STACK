@@ -1,40 +1,26 @@
 "use strict";
-// Requerimientos
 var express = require("express");
-var bodyParser = require("body-parser");
-const { conexion } = require("./database/conexion");
+var mongoose = require("mongoose");
 
-var cors = require("cors");
+mongoose.Promise = global.Promise;
+var app = require("./app");
 
-// Cargar Express
-var app = express();
-var puerto = 3377;
+var port = 3377;
 
-// cargar archivos de rutas.
-var estudiantes_rutas = require("./Rutes/rutes");
+// mongodb://localhost:27017/estudiantes
 
-/* Middlewears
- Confifuracion para que boyoparser funcione bien */
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+mongoose
+  .connect(
+    "mongodb+srv://natharevolution:jcEuOEQjFZ74jI8t@escuela-mean-stack.nrmfvpw.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    console.log("coneccion realizada con exito");
 
-//configuracion del cors.
-app.use(cors());
+    app.listen(port, () => {
+      console.log("Codigo ejecutado");
+    });
+  })
 
-app.get("/", (req, res) => {
-  res.status(200).send({
-    status: "200",
-    message: "back-end de aplicacion de escuela M.E.A.N Stack con Node js",
+  .catch((err) => {
+    console.log("Error al conectar", err);
   });
-});
-
-// reescribir rutas
-app.use("/api", estudiantes_rutas);
-
-// Crear servidor y escuchar peticiones http
-app.listen(puerto, () => {
-  console.log("Servidor corriendo en el puerto " + puerto);
-});
-
-/* Exportar el modulo app  */
-module.exports = app;
