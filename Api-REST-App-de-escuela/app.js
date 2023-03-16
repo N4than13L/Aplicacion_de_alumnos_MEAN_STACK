@@ -1,20 +1,23 @@
-//Cargar archivos
+"use strict";
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
-var project_routes = require("./Rutes/rutes");
 var cors = require("cors");
 
-// Middlewears
+// archivos de  rutas
+
+var rutas = require("./Rutes/rutes");
+
+// middleweares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//CORS
+// CORS
 app.use(cors());
 
-//Rutas
-app.use("/api", project_routes);
+//rutas
+app.use("/api", rutas);
 
-//Exportar
-
+// exportar
 module.exports = app;

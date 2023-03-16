@@ -9,6 +9,7 @@ var port = 3377;
 
 // mongodb+srv://natharevolution:jcEuOEQjFZ74jI8t@escuela-mean-stack.nrmfvpw.mongodb.net/?retryWrites=true&w=majority
 // mongodb://localhost:27017/estudiantes
+
 mongoose.set("strictQuery", true);
 mongoose
   .connect(
